@@ -1,0 +1,28 @@
+{
+	"name": "soccer",
+	"version": "0.0.1",
+	"license": "MIT",
+	"private": true,
+	"workspaces": [
+		"packages/*"
+	],
+	"scripts": {
+		"start:api": "yarn workspace @soccer/soccerapi start:dev",
+		"start:webapp": "yarn workspace @soccer/webapp dev",
+		"release": "release-it"
+	},
+	"release-it": {
+		"git": {
+			"commitMessage": "chore: release v${version}"
+		},
+		"plugins": {
+			"@grupoboticario/news-fragments": {
+				"changelogFile": "CHANGELOG.md"
+			}
+		}
+	},
+	"devDependencies": {
+		"@grupoboticario/news-fragments": "^1.12.0",
+		"release-it": "^14.12.4"
+	}
+}
