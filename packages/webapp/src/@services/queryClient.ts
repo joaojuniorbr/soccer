@@ -1,12 +1,13 @@
 import { QueryClient } from 'react-query';
 
 export const QUERY_DATA = {
-	TEAMS: 'teams',
-	TEAM: 'teamSingle',
-	TEAM_INFO: 'teamInfo',
+	LEAGUE: 'league',
 	MATCHS: 'matchs',
 	SQUAD: 'squad',
-	LEAGUE: 'league',
+	TEAM: 'teamSingle',
+	TEAMS: 'teams',
+	TEAM_ID: 'teamId',
+	TEAM_INFO: 'teamInfo',
 };
 
 export const queryClient = new QueryClient({

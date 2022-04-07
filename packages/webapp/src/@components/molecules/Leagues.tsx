@@ -1,23 +1,28 @@
-import { styled } from '@nextui-org/react';
+import { Container, styled } from '@nextui-org/react';
 
 import { useQuery } from 'react-query';
 
+import { leagues } from 'src/@common';
+
 import { queryClient, QUERY_DATA } from 'src/@services';
 
-const Wrapper = styled('ul', {
-	alignItems: 'center',
+const Wrapper = styled('div', {
 	background: '$white',
 	borderBottomLeftRadius: '$lg',
 	borderBottomRightRadius: '$lg',
-	display: 'flex',
-	justifyContent: 'space-between',
-	length: 0,
 	margin: 0,
-	padding: '$12 $10',
+	padding: '$12 $0',
 
-	li: {
+	ul: {
+		alignItems: 'center',
+		display: 'flex',
+		justifyContent: 'space-between',
 		margin: 0,
 		padding: 0,
+		li: {
+			margin: 0,
+			padding: 0,
+		},
 	},
 });
 
@@ -34,7 +39,6 @@ const ButtonLogo = styled('button', {
 	padding: 0,
 	transition: 'all 0.5s',
 	width: 64,
-	length: 0,
 
 	img: {
 		height: 56,
@@ -55,27 +59,7 @@ const ButtonLogo = styled('button', {
 	},
 });
 
-const LEAGUES = [
-	{
-		id: 39,
-		name: 'Premier League',
-	},
-
-	{
-		id: 140,
-		name: 'La Liga',
-	},
-
-	{
-		id: 135,
-		name: 'Serie A',
-	},
-
-	{
-		id: 71,
-		name: 'Campeonato Brasileiro',
-	},
-];
+const LEAGUES = leagues;
 
 export const Leagues = () => {
 	const { data: league } = useQuery(QUERY_DATA.LEAGUE);
@@ -86,18 +70,22 @@ export const Leagues = () => {
 
 	return (
 		<Wrapper>
-			{LEAGUES.map((item) => (
-				<li key={item.id}>
-					<ButtonLogo
-						onClick={() => handleLeague(item.id)}
-						active={item.id === league}>
-						<img
-							src={`https://media.api-sports.io/football/leagues/${item.id}.png`}
-							alt={item.name}
-						/>
-					</ButtonLogo>
-				</li>
-			))}
+			<Container>
+				<ul>
+					{LEAGUES.map((item) => (
+						<li key={item.id}>
+							<ButtonLogo
+								onClick={() => handleLeague(item.id)}
+								active={item.id === league}>
+								<img
+									src={`https://media.api-sports.io/football/leagues/${item.id}.png`}
+									alt={item.name}
+								/>
+							</ButtonLogo>
+						</li>
+					))}
+				</ul>
+			</Container>
 		</Wrapper>
 	);
 };

@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 
 import { styled } from '@nextui-org/react';
 
-import { RiHome7Fill, RiTeamFill, RiFootballFill } from 'react-icons/ri';
+import { RiHome7Fill, RiFootballFill } from 'react-icons/ri';
 
 const Wrapper = styled('nav', {
 	backgroundColor: '$white',
@@ -68,12 +68,7 @@ export const MenuNavigation = () => {
 					</NavLink>
 				</li>
 				<li>
-					<NavLink to='/teams'>
-						<RiTeamFill size={ICON_SIZE} />
-					</NavLink>
-				</li>
-				<li>
-					<NavLink to='/games'>
+					<NavLink to='/fixtures'>
 						<RiFootballFill size={ICON_SIZE} />
 					</NavLink>
 				</li>

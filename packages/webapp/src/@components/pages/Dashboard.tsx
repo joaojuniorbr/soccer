@@ -1,4 +1,4 @@
-import { Container, Grid, styled } from '@nextui-org/react';
+import { Container, Grid } from '@nextui-org/react';
 import { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 
@@ -14,17 +14,6 @@ interface IResponse extends IResponseApi {
 		}
 	];
 }
-
-const CardTeam = styled('div', {
-	background: '$white',
-	padding: '$6',
-	borderRadius: '$md',
-	length: 0,
-
-	img: {
-		display: 'block',
-	},
-});
 
 export const Dashboard = () => {
 	const [teams, setTeams] = useState<ILeagueStandings[]>([]);
@@ -50,6 +39,9 @@ export const Dashboard = () => {
 			} catch (error) {
 				console.log(error);
 			}
+		},
+		{
+			staleTime: 100000,
 		}
 	);
 

@@ -2,7 +2,7 @@ import { globalCss } from '@nextui-org/react';
 
 import { Route, Routes } from 'react-router-dom';
 
-import { Dashboard } from 'src/@components/pages';
+import { Dashboard, Team } from 'src/@components/pages';
 import { MenuNavigation } from './@components/molecules';
 
 const globalStyles = globalCss({
@@ -29,6 +29,7 @@ function App() {
 		<>
 			<Routes>
 				<Route path='/' element={<Dashboard />} />
+				<Route path='/team/:id' element={<Team />} />
 			</Routes>
 
 			<MenuNavigation />

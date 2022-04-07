@@ -1,18 +1,29 @@
 import { styled } from '@nextui-org/react';
 import { RiCheckboxBlankCircleFill } from 'react-icons/ri';
+import { Link } from 'react-router-dom';
 import { ILeagueStandings } from 'src/@types';
 
 const Wrapper = styled('div', {
-	alignItems: 'center',
-	background: '$white',
-	borderRadius: '$sm',
-	display: 'flex',
-	flexWrap: 'wrap',
 	marginBottom: '$8',
-	padding: '$4 $10 $4 $17',
-	position: 'relative',
-	overflow: 'hidden',
 	width: '100%',
+
+	a: {
+		alignItems: 'center',
+		background: '$white',
+		borderRadius: '$sm',
+		color: '$black',
+		display: 'flex',
+		flexWrap: 'wrap',
+		overflow: 'hidden',
+		padding: '$4 $10 $4 $17',
+		position: 'relative',
+		transition: 'all 0.3s ease-in-out',
+
+		'&:hover': {
+			boxShadow: '$sm',
+			transform: 'translateY(-4px)',
+		},
+	},
 });
 
 const Position = styled('div', {
@@ -134,16 +145,18 @@ export const TeamRank = ({ item }: { item: ILeagueStandings }) => {
 	};
 	return (
 		<Wrapper>
-			<Position status={statusPromotion()}>{item.rank}</Position>
+			<Link to={`/team/${item.team.id}`}>
+				<Position status={statusPromotion()}>{item.rank}</Position>
 
-			<Brand>
-				<img src={item.team.logo} alt={item.team.name} />
-			</Brand>
+				<Brand>
+					<img src={item.team.logo} alt={item.team.name} />
+				</Brand>
 
-			<Info>
-				<InfoName>{item.team.name}</InfoName>
-				<LastestResults results={item.form} />
-			</Info>
+				<Info>
+					<InfoName>{item.team.name}</InfoName>
+					<LastestResults results={item.form} />
+				</Info>
+			</Link>
 		</Wrapper>
 	);
 };
